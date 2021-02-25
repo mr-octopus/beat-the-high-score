@@ -38,7 +38,7 @@ open class BeatTheHighScore : Game() {
                             "Will force the loading of it. (Bad performance expected!)"
                 }
 
-                finishLoadingAsset(fileName)
+                finishLoadingAsset(fileName) as AssetManager
                 super.get(fileName, type)
             }
         }
@@ -52,7 +52,7 @@ open class BeatTheHighScore : Game() {
 
 
         info { "Application start loading assets..." }
-        assetsManager.logger.level = Logger.ERROR // enable logging on assets manager
+        assetsManager.logger.level = Logger.DEBUG // enable logging on assets manager
         assetsManager.setLoader(Aseprite::class.java, AsepriteLoader(InternalFileHandleResolver()))
         assetsManager.setLoader(AsepriteJson::class.java, AsepriteJsonLoader(InternalFileHandleResolver()))
         assetsManager.setLoader(TiledMap::class.java, TmxMapLoader(InternalFileHandleResolver()))
